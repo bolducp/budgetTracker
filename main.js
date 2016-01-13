@@ -8,7 +8,6 @@ account.balance = 500;
 function init(){
   var currentDate = moment().format('YYYY-MM-DD');
   $('#date').attr("max", currentDate);
-
   clickHandler();
 }
 
@@ -31,7 +30,6 @@ function addTransaction(event){
 
   updateBalance(transactionType, amount);
 
-  console.log("transaction", transactionType, "desc", description, "amount", amount, "date", formattedDate);
   var $tableRow = $("#template").clone();
   if (transactionType === "deposit"){
     $tableRow.addClass("deposit");
@@ -71,9 +69,7 @@ function getFormattedAmount(transactionType, amount){
 }
 
 function filterTransactions(){
-  console.log("filtering");
   var transactionType = $(this).val();
-  console.log(typeof transactionType, transactionType)
   $('tr').children().css("display", "table-cell");
   $('tr').css("display", "table-row");
   if (transactionType === "deposits"){
@@ -84,5 +80,4 @@ function filterTransactions(){
     $('tr').css("display", "table-row");
   }
  $('#template').css("display", "none");
-
 }

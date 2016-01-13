@@ -13,7 +13,7 @@ function init(){
 
 function clickHandler(){
   $("#newTransaction").submit(addTransaction);
-  $("#transactions").on("click", ".glyphicon-trash", deleteTransaction); // deferred event handler
+  $("#transactions").on("click", ".trashButton", deleteTransaction); // deferred event handler
   $("#typeOfTransaction").change(filterTransactions);
 }
 
@@ -35,6 +35,7 @@ function addTransaction(event){
     $tableRow.addClass("withdrawals");
   }
   $tableRow.removeAttr("id");
+  $tableRow.data("amount", getFormattedAmount(transactionType, amount));
   $tableRow.children(".date").text(formattedDate);
   $tableRow.children(".description").text(description);
   $tableRow.children(".amount").text(numeral(getFormattedAmount(transactionType, amount)).format('$0,0.00'));
@@ -44,7 +45,16 @@ function addTransaction(event){
 }
 
 function deleteTransaction(){
-  $(this).closest("tr").remove();
+  var $currentRow = $(this).closest("tr");
+  var rowAmount = $currentRow.data("amount");
+
+  undoTransaction(rowAmount);
+  $currentRow.remove();
+}
+
+function undoTransaction(rowAmount){
+  account.balance -= rowAmount;
+  $('h3').text("Current Account Balance: " + numeral(account["balance"]).format('$0,0.00'));
 }
 
 function updateBalance(transactionType, amount){

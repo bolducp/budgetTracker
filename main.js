@@ -11,13 +11,11 @@ function init(){
   clickHandler();
 }
 
-
 function clickHandler(){
   $("#newTransaction").submit(addTransaction);
-  $("#transactions").on("click", ".glyphicon-trash", deleteTransaction);
+  $("#transactions").on("click", ".glyphicon-trash", deleteTransaction); // deferred event handler
   $("#typeOfTransaction").change(filterTransactions);
 }
-
 
 function addTransaction(event){
   event.preventDefault();
@@ -42,13 +40,12 @@ function addTransaction(event){
   $tableRow.children(".amount").text(numeral(getFormattedAmount(transactionType, amount)).format('$0,0.00'));
   $tableRow.children(".runningBalance").text(numeral(account["balance"]).format('$0,0.00'));
   $("#transactions").prepend($tableRow);
-  $("#newTransaction").trigger("reset");
+  $("#newTransaction").trigger("reset"); // reset form
 }
 
 function deleteTransaction(){
   $(this).closest("tr").remove();
 }
-
 
 function updateBalance(transactionType, amount){
   if (transactionType === "deposit"){
@@ -58,7 +55,6 @@ function updateBalance(transactionType, amount){
   }
   $('h3').text("Current Account Balance: " + numeral(account["balance"]).format('$0,0.00'));
 }
-
 
 function getFormattedAmount(transactionType, amount){
   if (transactionType === "deposit"){

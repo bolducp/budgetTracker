@@ -55,6 +55,7 @@ function deleteTransaction(){
 function undoTransaction(rowAmount){
   account.balance -= rowAmount;
   $('h3').text("Current Account Balance: " + numeral(account["balance"]).format('$0,0.00'));
+  $('h3').addClass("animated flash");
 }
 
 function updateBalance(transactionType, amount){
@@ -64,6 +65,7 @@ function updateBalance(transactionType, amount){
     account.balance -= amount;
   }
   $('h3').text("Current Account Balance: " + numeral(account["balance"]).format('$0,0.00'));
+  $('h3').addClass("animated flash");
 }
 
 function getFormattedAmount(transactionType, amount){

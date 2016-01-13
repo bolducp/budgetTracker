@@ -80,14 +80,17 @@ function getFormattedAmount(transactionType, amount){
 
 function filterTransactions(){
   var transactionType = $(this).val();
-  $('tr').children().css("display", "table-cell");
-  $('tr').css("display", "table-row");
-  if (transactionType === "deposits"){
-    $('.withdrawals').hide();
-  }else if (transactionType === "withdrawals"){
-    $('.deposit').hide();
-  } else {
-    $('tr').css("display", "table-row");
+  $("#transactions tr").hide();
+
+  switch(transactionType){
+    case "deposits":
+      $(".deposit").show();
+      break;
+    case "withdrawals":
+      $('.withdrawals').show();
+      break;
+    default:
+      $('#transactions tr').not("#template").show();
+      break;
   }
- $('#template').css("display", "none");
 }

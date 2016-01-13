@@ -39,8 +39,8 @@ function addTransaction(event){
   $tableRow.removeAttr("id");
   $tableRow.children(".date").text(formattedDate);
   $tableRow.children(".description").text(description);
-  $tableRow.children(".amount").text("$ " + getFormattedAmount(transactionType, amount));
-  $tableRow.children(".runningBalance").text("$ " + account["balance"]);
+  $tableRow.children(".amount").text(numeral(getFormattedAmount(transactionType, amount)).format('$0,0.00'));
+  $tableRow.children(".runningBalance").text(numeral(account["balance"]).format('$0,0.00'));
   $("#transactions").prepend($tableRow);
   $("#newTransaction").trigger("reset");
 }
@@ -52,11 +52,11 @@ function deleteTransaction(){
 
 function updateBalance(transactionType, amount){
   if (transactionType === "deposit"){
-    Math.round((account.balance += amount) * 100)/100;
+    account.balance += amount;
   } else{
-    Math.round((account.balance -= amount) * 100)/100;;
+    account.balance -= amount;
   }
-  $('h3').text("Current Account Balance: $" + account["balance"]);
+  $('h3').text("Current Account Balance: " + numeral(account["balance"]).format('$0,0.00'));
 }
 
 

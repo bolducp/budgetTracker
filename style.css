@@ -1,0 +1,68 @@
+body{
+  font-family: 'Raleway', sans-serif;
+  background-color: GhostWhite;
+}
+
+th{
+  border-bottom: 3px solid black;
+  padding-top: 3%;
+}
+
+td{
+  padding-left: 15px;
+  border-bottom: 1px solid black;
+}
+
+tr{
+  line-height: 3;
+}
+
+h3{
+  text-align: right;
+  margin-left: 5%;
+  margin-right: 5%;
+  border: 1px solid #EEEEEE;
+  border-radius: 3px;
+  padding: 10px 10px 5px 5px;
+  background-color: white;
+}
+
+#display{
+  border: 1px solid #EEEEEE;
+  border-radius: 3px;
+  padding: 10px 0px 5px 10px;
+  background-color: white;
+}
+
+#template{
+  display:none;
+}
+
+#transactions{
+  margin-left: 10px;
+}
+
+#dropDown{
+  padding-bottom:15px;
+}
+
+#transactionType{
+  padding-bottom:20px;
+  font-size: 25px;
+}
+
+.input-group{
+  padding-bottom: 10px;
+}
+
+.deposit{
+  background-color: DarkSeaGreen;
+}
+
+.withdrawals{
+  background-color: #EF6969;
+}
+
+.deleteTransaction{
+  margin-left: 20px;
+}

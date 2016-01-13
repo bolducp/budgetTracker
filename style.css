@@ -3,6 +3,10 @@ body{
   background-color: GhostWhite;
 }
 
+h2{
+  text-align: center;
+}
+
 th{
   border-bottom: 3px solid black;
   padding-top: 3%;
